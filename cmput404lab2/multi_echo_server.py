@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import socket
 import time
-from multiprocessing import Pool()
+from multiprocessing import Process
 
 
 HOST = ""
@@ -27,13 +27,14 @@ def handle_echo(addr, conn):
     full_data = b""
     while True:
         data = conn.recv(BUFFER_SIZE)
-        print(data)
+        #print(data)
         if not data: break
         full_data += data
-        conn.send(data)
+        #conn.send(data)
                 
         time.sleep(0.5)
         conn.sendall(full_data)
+        conn.shutdown(socket.SHUT_RDWR)
         conn.close()
         
 if __name__ == "__main__":

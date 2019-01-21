@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 import socket
+import time
 
-HOST = "localhost"
+HOST = ""
 PORT = 8001
 BUFFER_SIZE = 1024
 
@@ -13,26 +14,6 @@ BUFFER_SIZE = 1024
 
 #payload = f"GET / HTTP/1.0\r\nHost: {HOST}\r\n\r\n"
 
-payload = """GET / HTTP/1.0\r\nHost:
-www.google.com\r\n\r\n"""
-
-def get_request(addr):
-    (family, socktype, proto, canonname, sockaddr) = addr
-    try:
-        s = socket.socket(family, socktype, proto)
-        s.connect(sockaddr)
-        s.sendall(payload.encode()) #encode(): converst str into byte
-        s.shutdown(socket.SHUT_WR)
-
-        while True:
-            data = s.recv(BUFFER_SIZE)
-            if not data: break
-            full_data += data
-        print(full_data)
-    except Exception as e:
-        print(e)
-    finally:
-        s.close()
 def main():
     google_addr = None
     addr_info = socket.getaddrinfo("www.google.com", 80)
@@ -56,7 +37,6 @@ def main():
                 send_full_data = b""
                 while True:
                     data = conn.recv(BUFFER_SIZE)
-                    print(data)
                     if not data: break
                     send_full_data += data
                 proxy_end.sendall(send_full_data)
@@ -67,7 +47,6 @@ def main():
                     if not data: break
                     conn.send(data)
                     
-            time.sleep(0.5)
             conn.close()
 
 if __name__ == "__main__":

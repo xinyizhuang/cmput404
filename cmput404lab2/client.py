@@ -4,6 +4,7 @@ import socket
 
 HOST = "www.google.com"
 PORT = 80
+
 BUFFER_SIZE = 1024
 
 #payload = """GET / HTTP/1.0

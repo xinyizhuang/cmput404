@@ -13,8 +13,7 @@ BUFFER_SIZE = 1024
 
 #payload = f"GET / HTTP/1.0\r\nHost: {HOST}\r\n\r\n"
 
-payload = "GET / HTTP/1.0\r\nHost:
-www.google.com\r\n\r\n"
+payload = "GET / HTTP/1.0\r\nHost: www.google.com\r\n\r\n"
 
 def get_request(addr):
     (family, socktype, proto, canonname, sockaddr) = addr
