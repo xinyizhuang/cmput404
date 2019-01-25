@@ -1,0 +1,3 @@
+[submodule "cmput404lab3/cmput404lab3/cgi-lab"]
+	path = cmput404lab3/cmput404lab3/cgi-lab
+	url = https://github.com/xinyizhuang/cmput404
