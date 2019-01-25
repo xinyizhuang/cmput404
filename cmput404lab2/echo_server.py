@@ -2,8 +2,8 @@
 import socket
 import time
 
-HOST = ""
-PORT = 8001
+HOST = "localhost"
+PORT = 8080
 BUFFER_SIZE = 1024
 
 def main():
@@ -23,7 +23,6 @@ def main():
                 full_data += data
                 #conn.send(data)
             
-            time.sleep(0.5)
             conn.sendall(full_data)
             conn.close()
         
